@@ -41,29 +41,24 @@ func (p *Position) Move(v Vector) {
 	p.y += v.dy
 }
 
-func (s *Sprite) Move(v Vector) {
-	s.x += v.dx
-	s.y += v.dy
+func (p *Position) SetPosition(x, y float64) {
+	p.x = x
+	p.y = y
 }
 
-func (s *Sprite) SetPosition(x, y float64) {
-	s.x = x
-	s.y = y
-}
-
-func (s *Sprite) GetPosition() Position {
-	return CreatePosition(s.x, s.y)
-}
-
-func (s1, s2 *Sprite) IsColliding() bool {
-	return !(s1.x+s1.width < s2.x ||
-		s1.x > s2.x+s2.width ||
-		s1.y+s1.height < s2.y ||
-		s1.y > s2.y+s2.height)
+func (p Position) GetPosition() Position {
+	return p
 }
 
 func (p *Position) DistanceTo(other Position) float64 {
 	dx := other.x - p.x
 	dy := other.y - p.y
-	return math.Sqrt(float64(dx*dx + dy*dy))
+	return math.Sqrt(dx*dx + dy*dy)
+}
+
+func (s1 *Sprite) IsColliding(s2 *Sprite) bool {
+	return !(s1.x+s1.width < s2.x ||
+		s1.x > s2.x+s2.width ||
+		s1.y+s1.height < s2.y ||
+		s1.y > s2.y+s2.height)
 }
