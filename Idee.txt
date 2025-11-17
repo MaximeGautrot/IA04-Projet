@@ -1,0 +1,24 @@
+Créer une simulation simplifiée d’un petit groupe d’humains préhistoriques qui doivent survivre en prenant des décisions (chasse, cueillette, repos, etc.).
+L’objectif est d’observer comment leurs choix influencent la survie du groupe selon les ressources disponibles (animaux, végétaux) et leur état (énergie, faim...).
+
+Éléments du modèle :
+- N humains : chaque humain a un état (énergie, faim, santé) et prend une décision à chaque tour.
+- M animaux : ressources à chasser. Ils donnent de la nourriture mais comportent un risque (blessure, échec).
+- K végétaux : ressources à cueillir. Moins risquées mais moins rentables.
+
+Décisions possibles :
+À chaque tour, chaque humain choisit entre plusieurs actions :
+- Chasser → gain élevé mais risque de blessure, echec et peu avoir besoin de collaboration.
+- Cueillir → gain moyen, sûr, mais vite stoper .
+- Se reposer → pas de ressource mais récupération d’énergie.
+Les décisions peuvent être prises (à choisir, surement faire des cas différents):
+- soit de manière déterministe
+- soit de manière aléatoire pondérée
+
+Déroulement de la simulation :
+- Initialisation : création du monde (humains, animaux, végétaux)
+- Boucle principale (jour ou tour) : chaque humain choisit une action, le résultat de l’action est calculé (succès/échec, gains, pertes), mise à jour de son état (énergie, faim, santé).
+- Fin : la simulation s’arrête quand tous les humains sont morts ou après un certain nombre de tours.
+
+
+L'objectif est d'ajouter des partages simples pour insérer de la théorie du choix, par exemple des personnes egocentrique, collectivistes, etc.
