@@ -6,9 +6,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-// ======================================================================
-// 1. L'INTERFACE SPRITE
-// ======================================================================
+// Interface Sprite =================================
 
 type Sprite interface {
 	Update()
@@ -17,9 +15,7 @@ type Sprite interface {
 	SetAnimationRow(row int)
 }
 
-// ======================================================================
-// 2. LE STRUCT DE BASE (Modifié)
-// ======================================================================
+// BaseSprite =======================================
 
 type BaseSprite struct {
 	sheet *ebiten.Image
@@ -64,9 +60,7 @@ func (s *BaseSprite) SetPosition(x, y float64) {
 	s.y = y
 }
 
-// ======================================================================
-// 3. SPRITES SPÉCIFIQUES (Modifié)
-// ======================================================================
+// Rooster Sprite, Cow Sprite, Bull Sprite ==============================
 
 type RoosterSprite struct {
 	BaseSprite
@@ -153,4 +147,82 @@ func (s *BullSprite) SetAnimationRow(row int) {
 			s.frameCount = 4
 		}
 	}
+}
+
+// Sprite Humain =======================================
+
+const (
+	HumanFrameWidth  = 64
+	HumanFrameHeight = 64
+	HumanAnimSpeed   = 10
+
+	HumanRowsPerSheet = 4
+
+	HumanFrameCountIdle  = 9
+	HumanFrameCountWalk  = 6
+	HumanFrameCountRun   = 8
+	HumanFrameCountHurt  = 5
+	HumanFrameCountDeath = 7
+)
+
+type humanAnim struct {
+	sheet      *ebiten.Image
+	frameCount int
+}
+
+type HumanSprite struct {
+	BaseSprite
+	anims        []humanAnim 
+	globalRow    int         
+	rowsPerSheet int        
+}
+
+func NewHumanSprite() *HumanSprite {
+	// Crée la liste ordonnée des animations : ORDRE EST IMPORTANT
+	anims := []humanAnim{
+		{sheet: imgHumanIdle, frameCount: HumanFrameCountIdle},   // index 0: Lignes 0-3
+		{sheet: imgHumanWalk, frameCount: HumanFrameCountWalk},   // index 1: Lignes 4-7
+		{sheet: imgHumanRun, frameCount: HumanFrameCountRun},    // index 2: Lignes 8-11
+		{sheet: imgHumanHurt, frameCount: HumanFrameCountHurt},   // index 3: Lignes 12-15
+		{sheet: imgHumanDeath, frameCount: HumanFrameCountDeath}, // index 4: Lignes 16-19
+	}
+
+	s := &HumanSprite{
+		BaseSprite: BaseSprite{
+			sheet:       anims[0].sheet,
+			currentAnim: 0,
+			frameWidth:  HumanFrameWidth,
+			frameHeight: HumanFrameHeight,
+			frameCount:  anims[0].frameCount,
+			animSpeed:   HumanAnimSpeed,
+		},
+		anims:        anims,
+		globalRow:    0,
+		rowsPerSheet: HumanRowsPerSheet,
+	}
+	return s
+}
+
+func (s *HumanSprite) SetAnimationRow(globalRow int) {
+	if s.globalRow == globalRow {
+		return
+	}
+	s.globalRow = globalRow
+
+	sheetIndex := globalRow / s.rowsPerSheet
+
+	localRow := globalRow % s.rowsPerSheet
+
+	if sheetIndex >= len(s.anims) {
+		sheetIndex = len(s.anims) - 1
+	}
+
+	anim := s.anims[sheetIndex]
+
+	s.sheet = anim.sheet
+	s.frameCount = anim.frameCount
+	s.currentAnim = localRow 
+
+	s.currentFrame = 0
+	s.animTick = 0
 }

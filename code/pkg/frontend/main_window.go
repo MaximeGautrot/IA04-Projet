@@ -12,6 +12,11 @@ var (
 	imgRooster *ebiten.Image
 	imgCow    *ebiten.Image
 	imgBull    *ebiten.Image
+	imgHumanIdle *ebiten.Image
+	imgHumanWalk *ebiten.Image
+	imgHumanRun  *ebiten.Image
+	imgHumanHurt *ebiten.Image
+	imgHumanDeath *ebiten.Image
 )
 
 func loadSpriteSheets() {
@@ -27,6 +32,26 @@ func loadSpriteSheets() {
 	imgBull, _, err = ebitenutil.NewImageFromFile("images/Bull_animation_with_shadow.png")
 	if err != nil {
 		log.Fatalf("Erreur chargement Bull: %v", err)
+	}
+	imgHumanIdle, _, err = ebitenutil.NewImageFromFile("images/human/Idle.png")
+	if err != nil {
+		log.Fatalf("Erreur chargement Human Idle: %v", err)
+	}
+	imgHumanWalk, _, err = ebitenutil.NewImageFromFile("images/human/Walk.png")
+	if err != nil {
+		log.Fatalf("Erreur chargement Human Walk: %v", err)
+	}
+	imgHumanRun, _, err = ebitenutil.NewImageFromFile("images/human/Run.png")
+	if err != nil {
+		log.Fatalf("Erreur chargement Human Run: %v", err)
+	}
+	imgHumanHurt, _, err = ebitenutil.NewImageFromFile("images/human/Hurt.png")
+	if err != nil {
+		log.Fatalf("Erreur chargement Human Hurt: %v", err)
+	}
+	imgHumanDeath, _, err = ebitenutil.NewImageFromFile("images/human/Death.png")
+	if err != nil {
+		log.Fatalf("Erreur chargement Human Death: %v", err)
 	}
 }
 
@@ -68,7 +93,19 @@ func (mw *MainWindow) Run() {
 	bull1.SetPosition(200, 150)
 	bull1.SetAnimationRow(4) 
 
-	mw.sprites = []Sprite{rooster1, cow1, bull1}
+	human1 := NewHumanSprite()
+	human1.SetPosition(100, 120)
+	human1.SetAnimationRow(4)
+
+	human2 := NewHumanSprite()
+	human2.SetPosition(250, 80)
+	human2.SetAnimationRow(1)
+
+	human3 := NewHumanSprite()
+	human3.SetPosition(250, 180)
+	human3.SetAnimationRow(10)
+
+	mw.sprites = []Sprite{rooster1, cow1, bull1, human1, human2, human3}
 
 	ebiten.SetWindowSize(640, 480) 
 	ebiten.SetWindowTitle("Simulation")
