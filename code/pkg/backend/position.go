@@ -9,7 +9,6 @@ type Position struct {
 
 type Sprite struct {
 	Position
-	imagePath string
 	width     float64
 	height    float64
 }
@@ -23,10 +22,9 @@ func CreatePosition(x, y float64) Position {
 	return Position{x: x, y: y}
 }
 
-func CreateSprite(x, y float64, imagePath string, width, height float64) Sprite {
+func CreateSprite(x, y float64, width, height float64) Sprite {
 	return Sprite{
 		Position:  CreatePosition(x, y),
-		imagePath: imagePath,
 		width:     width,
 		height:    height,
 	}
