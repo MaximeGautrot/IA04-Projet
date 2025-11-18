@@ -6,6 +6,7 @@ type Action interface {
 }
 
 type ParametesAction struct {
+	agent      *Agent
 	name       string
 	baseRisk   int
 	baseReward int

@@ -3,17 +3,16 @@ package simulation
 type Profile int
 
 const (
-    Selfish  Profile = iota // The Free-Rider
-	Collectivist			  // The Unconditional Cooperator
-	Pragmatic                 // The Reciprocator
-	Cautious                  // The Risk-Averse
+	Selfish      Profile = iota // The Free-Rider
+	Collectivist                // The Unconditional Cooperator
+	Pragmatic                   // The Reciprocator
+	Cautious                    // The Risk-Averse
 )
-
 
 type Human struct {
 	AgentParams
 	hunger        uint
-	profile   	  Profile
+	profile       Profile
 	strategyType  string
 	energy        uint
 	currentAction Action
@@ -28,7 +27,7 @@ func CreateGHuman(name string, health uint, sprite Sprite, hunger, energy uint, 
 			sprite: sprite,
 		},
 		hunger:       hunger,
-		profile:     profile,
+		profile:      profile,
 		strategyType: strategyType,
 		energy:       energy,
 	}
@@ -50,12 +49,12 @@ func (h *Human) GetEnergy() uint {
 	return h.energy
 }
 
-func (h *Human) GetCurrentAction() Action { {
+func (h *Human) GetCurrentAction() Action {
 	return h.currentAction
 }
 
+func (h *Human) ChoseAction() {
+}
 
-
-func (h *Human) isAlive() bool {
-	return h.alive
+func (h *Human) RunAction() {
 }

@@ -10,7 +10,7 @@ const (
 
 type Animal struct {
 	AgentParams
-	typ 		 animalType
+	typ          animalType
 	peopleNeeded int
 }
 
@@ -45,16 +45,8 @@ func (a *Animal) GetType() animalType {
 	return a.typ
 }
 
-func (a *Animal) GetSprite() Sprite {
-	return a.sprite
-}
-
 func (a *Animal) GetPeopleNeeded() int {
 	return a.peopleNeeded
-}
-
-func (a *Animal) isAlive() bool {
-	return a.alive
 }
 
 func (a *Animal) GetEnergyValue() uint {
@@ -69,4 +61,3 @@ func (a *Animal) GetEnergyValue() uint {
 		return 0
 	}
 }
-

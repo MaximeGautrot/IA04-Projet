@@ -10,7 +10,7 @@ const (
 
 type Vegetable struct {
 	AgentParams
-	typ 		 vegetableType
+	typ vegetableType
 }
 
 func CreateVegetable(name string, health int, sprite Sprite, typ vegetableType) *Vegetable {
