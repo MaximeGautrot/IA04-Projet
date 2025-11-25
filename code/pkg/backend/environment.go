@@ -1,16 +1,18 @@
 package simulation
 
 type Environment struct {
-	width  int
-	height int
-	agents []Agent
+	width   int
+	height  int
+	agents  []Agent
+	objects []Object
 }
 
 func CreateEnvironment(width int, height int) Environment {
 	return Environment{
-		width:  width,
-		height: height,
-		agents: []Agent{},
+		width:   width,
+		height:  height,
+		agents:  []Agent{},
+		objects: []Object{},
 	}
 }
 

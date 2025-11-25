@@ -1,13 +1,6 @@
 package simulation
 
 type Action interface {
-	Execute(a *Agent, env *Environment)
-	evaluateUtility(a *Agent, env *Environment) float64
-}
-
-type ParametesAction struct {
-	agent      *Agent
-	name       string
-	baseRisk   int
-	baseReward int
+	Execute(a Agent, env *Environment)
+	evaluateUtility(a Agent, env *Environment) float64
 }

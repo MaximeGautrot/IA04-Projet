@@ -11,14 +11,16 @@ const (
 
 type Human struct {
 	AgentParams
-	hunger        uint
-	profile       Profile
-	strategyType  string
-	energy        uint
-	currentAction Action
+	hunger         uint
+	profile        Profile
+	strategyType   string
+	energy         uint
+	currentAction  Action
+	visibleAgents  []Agent
+	visibleObjects []Object
 }
 
-func CreateGHuman(name string, health uint, sprite Sprite, hunger, energy uint, profile Profile, strategyType string) *Human {
+func CreateHuman(name string, health int, sprite Sprite, hunger, energy uint, profile Profile, strategyType string) *Human {
 	return &Human{
 		AgentParams: AgentParams{
 			name:   name,
@@ -53,8 +55,11 @@ func (h *Human) GetCurrentAction() Action {
 	return h.currentAction
 }
 
-func (h *Human) ChoseAction() {
+func (h *Human) Percept(env *Environment) {
 }
 
-func (h *Human) RunAction() {
+func (h *Human) Deliberate() {
+}
+
+func (h *Human) Act(env *Environment) {
 }

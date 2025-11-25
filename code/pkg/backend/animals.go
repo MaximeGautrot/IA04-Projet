@@ -1,20 +1,32 @@
 package simulation
 
-type animalType int
+type AnimalType int
 
 const (
-	Chicken animalType = iota
+	Chicken AnimalType = iota
 	Cow
 	Bull
 )
 
+type AnimalState int
+
+const (
+	AnimalStateWander AnimalState = iota
+	AnimalStateFlee
+	AnimalStateStay
+)
+
 type Animal struct {
 	AgentParams
-	typ          animalType
-	peopleNeeded int
+	typ             AnimalType
+	peopleNeeded    int
+	state           AnimalState
+	targetPos       Position // Pour Wander ou Flee
+	stepsInState    int      // Pour changer d'état après un temps
+	detectedThreats []Agent  // Agents perçus comme des menaces
 }
 
-func CreateAnimal(name string, sprite Sprite, typ animalType) *Animal {
+func CreateAnimal(name string, sprite Sprite, typ AnimalType) *Animal {
 	var health int
 	var peopleNeeded int
 
@@ -37,11 +49,12 @@ func CreateAnimal(name string, sprite Sprite, typ animalType) *Animal {
 			alive:  true,
 			sprite: sprite,
 		},
-		typ: typ,
+		typ:          typ,
+		peopleNeeded: peopleNeeded,
 	}
 }
 
-func (a *Animal) GetType() animalType {
+func (a *Animal) GetType() AnimalType {
 	return a.typ
 }
 
@@ -60,4 +73,13 @@ func (a *Animal) GetEnergyValue() uint {
 	default:
 		return 0
 	}
+}
+
+func (a *Animal) Percept(env *Environment) {
+}
+
+func (a *Animal) Deliberate() {
+}
+
+func (a *Animal) Act(env *Environment) {
 }

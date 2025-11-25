@@ -5,7 +5,7 @@ type Object interface {
 	GetSprite() Sprite
 	GetID() uint
 	GetName() string
-	Spawn()
+	Spawn(x, y float64)
 }
 
 type ObjectParams struct {

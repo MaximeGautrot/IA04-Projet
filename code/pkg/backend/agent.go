@@ -9,6 +9,9 @@ type Agent interface {
 	GetHealth() int
 	Kill()
 	IsAttacked(damage int)
+	Percept(env *Environment)
+	Deliberate()
+	Act(env *Environment)
 }
 
 type AgentParams struct {
