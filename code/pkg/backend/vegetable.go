@@ -9,15 +9,15 @@ const (
 )
 
 type Vegetable struct {
-	AgentParams
-	typ 		 vegetableType
+	ObjectParams
+	typ vegetableType
 }
 
-func CreateVegetable(name string, health int, sprite Sprite, typ vegetableType) *Vegetable {
+func CreateVegetable(id uint, name string, sprite Sprite, typ vegetableType) *Vegetable {
 	return &Vegetable{
-		AgentParams: AgentParams{
+		ObjectParams: ObjectParams{
+			id:     id,
 			name:   name,
-			health: health,
 			alive:  true,
 			sprite: sprite,
 		},
@@ -47,5 +47,5 @@ func (v *Vegetable) GetEnergyValue() uint {
 }
 
 func (v *Vegetable) Consume() {
-	v.Kill()
+	v.alive = false
 }
