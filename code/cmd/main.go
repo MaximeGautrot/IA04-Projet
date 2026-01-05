@@ -115,7 +115,7 @@ func (a *App) StartSimulation() {
 
 func main() {
 	ebiten.SetWindowSize(1050, 600)
-	ebiten.SetWindowTitle("IA04 - Simulation Préhistorique Avancée")
+	ebiten.SetWindowTitle("IA04 - Simulation Préhistorique")
 	
 	app := NewApp()
 
