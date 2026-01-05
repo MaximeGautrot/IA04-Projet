@@ -8,9 +8,10 @@ L’objectif est d’observer comment leurs choix influencent la survie du group
 
 Décisions possibles :
 À chaque tour, chaque humain choisit entre plusieurs actions :
-- Chasser → gain élevé mais risque de blessure, echec et peu avoir besoin de collaboration.
-- Cueillir → gain moyen, sûr, mais vite stoper .
-- Se reposer → pas de ressource mais récupération d’énergie.
+- Chasser → gain élevé mais risque de blessure, peu avoir besoin de collaboration.
+- Cueillir → gain moyen, sûr, mais moins d'energie.
+- Se reposer → pas de ressource mais récupération d’énergie et de vie.
+
 Les décisions peuvent être prises (à choisir, surement faire des cas différents):
 - soit de manière déterministe
 - soit de manière aléatoire pondérée
