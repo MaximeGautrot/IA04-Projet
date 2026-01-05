@@ -276,8 +276,6 @@ func (mw *MainWindow) drawSidebarInfo(screen *ebiten.Image) {
 		if h, ok := mw.SelectedAgent.(*simulation.Human); ok {
 			ebitenutil.DebugPrintAt(screen, fmt.Sprintf("Faim: %d", h.GetHunger()), 10, y); y+=line
 			ebitenutil.DebugPrintAt(screen, fmt.Sprintf("Energie: %d", h.GetEnergy()), 10, y); y+=line
-			ebitenutil.DebugPrintAt(screen, fmt.Sprintf("Âge: %d", h.Age), 10, y); y+=line
-			ebitenutil.DebugPrintAt(screen, fmt.Sprintf("Durée de vie: %d", h.Lifespan), 10, y); y+=line
 			
 			prof := "Inconnu"
 			switch h.GetProfile() {
