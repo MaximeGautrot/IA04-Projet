@@ -3,8 +3,8 @@ package simulation
 import "math"
 
 type Position struct {
-	x float64
-	y float64
+	X float64
+	Y float64
 }
 
 type Sprite struct {
@@ -19,7 +19,7 @@ type Vector struct {
 }
 
 func CreatePosition(x, y float64) Position {
-	return Position{x: x, y: y}
+	return Position{X: x, Y: y}
 }
 
 func CreateSprite(x, y float64, width, height int) Sprite {
@@ -35,13 +35,13 @@ func CreateVector(dx, dy float64) Vector {
 }
 
 func (p *Position) MovePosition(v Vector) {
-	p.x += v.dx
-	p.y += v.dy
+	p.X += v.dx
+	p.Y += v.dy
 }
 
 func (p *Position) SetPosition(x, y float64) {
-	p.x = x
-	p.y = y
+	p.X = x
+	p.Y = y
 }
 
 func (p Position) GetPosition() Position {
@@ -49,14 +49,14 @@ func (p Position) GetPosition() Position {
 }
 
 func (p Position) DistanceTo(other Position) float64 {
-	dx := other.x - p.x
-	dy := other.y - p.y
+	dx := other.X - p.X
+	dy := other.Y - p.Y
 	return math.Sqrt(dx*dx + dy*dy)
 }
 
 func (s1 Sprite) IsColliding(s2 *Sprite) bool {
-	return !(s1.x+float64(s1.width) < s2.x ||
-		s1.x > s2.x+float64(s2.width) ||
-		s1.y+float64(s1.height) < s2.y ||
-		s1.y > s2.y+float64(s2.height))
+	return !(s1.X+float64(s1.width) < s2.X ||
+		s1.X > s2.X+float64(s2.width) ||
+		s1.Y+float64(s1.height) < s2.Y ||
+		s1.Y > s2.Y+float64(s2.height))
 }

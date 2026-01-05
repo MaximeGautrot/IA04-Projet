@@ -8,6 +8,8 @@ const (
 	Berry
 )
 
+const HungerValue = 5
+
 type Vegetable struct {
 	ObjectParams
 	typ vegetableType
@@ -33,14 +35,14 @@ func (v *Vegetable) GetSprite() Sprite {
 	return v.sprite
 }
 
-func (v *Vegetable) GetEnergyValue() uint {
+func (v *Vegetable) GetHungerValue() uint {
 	switch v.typ {
 	case Carrot:
-		return 12
+		return 60
 	case Lettuce:
-		return 8
+		return 40
 	case Berry:
-		return 5
+		return 25
 	default:
 		return 0
 	}

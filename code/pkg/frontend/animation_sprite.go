@@ -2,11 +2,11 @@ package frontend
 
 import (
 	"image"
+	"image/color"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-// Interface Sprite =================================
 
 type Sprite interface {
 	Update()
@@ -14,8 +14,6 @@ type Sprite interface {
 	SetPosition(x, y float64)
 	SetAnimationRow(row int)
 }
-
-// BaseSprite =======================================
 
 type BaseSprite struct {
 	sheet *ebiten.Image
@@ -59,9 +57,6 @@ func (s *BaseSprite) SetPosition(x, y float64) {
 	s.x = x
 	s.y = y
 }
-
-// Rooster Sprite, Cow Sprite, Bull Sprite ==============================
-
 type RoosterSprite struct {
 	BaseSprite
 }
@@ -149,8 +144,6 @@ func (s *BullSprite) SetAnimationRow(row int) {
 	}
 }
 
-// Sprite Humain =======================================
-
 const (
 	HumanFrameWidth  = 64
 	HumanFrameHeight = 64
@@ -225,4 +218,43 @@ func (s *HumanSprite) SetAnimationRow(globalRow int) {
 
 	s.currentFrame = 0
 	s.animTick = 0
+}
+
+type VegetableSprite struct {
+	image  *ebiten.Image
+	x, y   float64
+	width  int
+	height int
+}
+
+// NewVegetableSprite crée un carré de couleur unie R = Rouge, G = Vert, B = Bleu (0-255)
+func NewVegetableSprite(width, height int, r, g, b uint8) *VegetableSprite {
+	img := ebiten.NewImage(width, height)
+	
+	img.Fill(color.RGBA{r, g, b, 255})
+
+	return &VegetableSprite{
+		image:  img,
+		width:  width,
+		height: height,
+	}
+}
+
+func (v *VegetableSprite) Update() {
+	
+}
+
+func (v *VegetableSprite) Draw(screen *ebiten.Image) {
+	op := &ebiten.DrawImageOptions{}
+	op.GeoM.Translate(v.x, v.y)
+	screen.DrawImage(v.image, op)
+}
+
+func (v *VegetableSprite) SetPosition(x, y float64) {
+	v.x = x
+	v.y = y
+}
+
+func (v *VegetableSprite) SetAnimationRow(row int) {
+	
 }
