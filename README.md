@@ -72,7 +72,7 @@ Une fois la simulation lancée :
 * **Attention:** Il faut fermer la fenêtre du graphique et redémarrer la simulation dans le terminal pour en faire une nouvelle.
 
 ### 3. Inspection des Agents
-Cliquez sur n'importe quel agent humain dans la fenêtre permet d'afficher ses détails dans la barre latérale ("Inspection").
+Cliquez sur n'importe quel agent humain dans la fenêtre permet d'afficher ses détails dans la barre latérale ("Inspection"). Vous pouvez le suivre grâce au carré blanc au dessus de sa tête.
 
 * **Informations basiques:** Nom et ID.
 * **État Vital :** Faim, Énergie, Santé.
@@ -120,5 +120,5 @@ Le comportement des agents suit une boucle classique **PDA** :
 
 ## 📊 Analyse et Résultats
 
-![Statistiques de Fin](images/capture-graphique.PNG)
+![Statistiques de Fin](doc/capture-graphique.PNG)
 *(Exemple de graphiques montrant l'évolution des populations)*
