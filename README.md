@@ -56,7 +56,7 @@ Chaque agent s'exécute dans sa propre **Goroutine**, rendant la simulation haut
 ### 1. Configuration Initiale
 Au lancement, un écran de paramétrage vous permet de définir les conditions initiales de la simulation.
 
-![Écran de Configuration](doc/screenshot_config.png)
+![Écran de Configuration](doc/screenshot_config.PNG)
 
 * **Population Initiale :** Réglez le nombre d'humains, d'animaux et de plantes au départ.
 * **Taux d'Apparition (Lambda) :** Contrôlez la fréquence de réapparition des ressources (Animaux/Plantes) -> Selon un processus de poisson.
@@ -79,7 +79,7 @@ Cliquez sur n'importe quel agent humain dans la fenêtre permet d'afficher ses d
 * **Psychologie :** Profil de l'individu (ex: Prudent).
 * **Action en cours :** Ce que l'agent est en train de faire (Chasser, Dormir, Se reproduire...).
 
-![Image de la Simulation](doc/simulation.png)
+![Image de la Simulation](doc/simulation.PNG)
 
 ---
 
@@ -120,5 +120,5 @@ Le comportement des agents suit une boucle classique **PDA** :
 
 ## 📊 Analyse et Résultats
 
-![Statistiques de Fin](images/capture-graphique.png)
+![Statistiques de Fin](images/capture-graphique.PNG)
 *(Exemple de graphiques montrant l'évolution des populations)*
